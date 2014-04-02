@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="content-filter"
+   name="Content Based Parser/Filter"
+   version="0.0.1"
+   provider-name="nutch.org">
+
+   <runtime>
+      <!-- As defined in build.xml this plugin will end up bundled as content-filter.jar -->
+      <library name="content-filter.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <!-- The ContentCineParser extends the HtmlParseFilter to grab the contents of
+        any fitlered meta tags -->
+   <extension id="org.apache.nutch.parse.content.contentfilter"
+              name="Content Parser Filter"
+              point="org.apache.nutch.parse.HtmlParseFilter">
+      <implementation id="ContentFilterParser"
+                      class="org.apache.nutch.parse.content.ContentFilterParser"/>
+   </extension>
+
+</plugin>
